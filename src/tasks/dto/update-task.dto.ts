@@ -1,4 +1,4 @@
-import { TaskStatus } from '../schemas/task.schema';
+import { TaskStatus } from '../../schemas/task.schema';
 import { IsString, IsOptional, IsNotEmpty, IsIn } from 'class-validator';
 
 export class UpdateTaskDto {

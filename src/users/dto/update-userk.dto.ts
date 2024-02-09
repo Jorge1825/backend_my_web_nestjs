@@ -1,14 +1,14 @@
-import { TaskStatus } from '../schemas/task.schema';
+import { TaskStatus } from '../../schemas/task.schema';
 import { IsString, IsOptional, IsNotEmpty, IsIn } from 'class-validator';
 
-export class CreateTaskDto {
+export class UpdateTaskDto {
   @IsString({
     message: 'El título debe ser un texto',
   })
   @IsNotEmpty({
     message: 'El título no debe estar vacío',
   })
-  title: string;
+  title?: string;
 
   @IsString({
     message: 'La descripción debe ser un texto',
