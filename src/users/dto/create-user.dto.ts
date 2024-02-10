@@ -6,9 +6,9 @@ import {
   IsEmail,
   Length,
 } from 'class-validator';
-import { RoleUser } from 'src/schemas/user.schema';
 import { hashSync, compareSync } from 'bcryptjs';
 import { Transform } from 'class-transformer';
+import { RoleUser } from '../../common/enums/roles.enum';
 
 export class CreateUserDto {
   @IsString({

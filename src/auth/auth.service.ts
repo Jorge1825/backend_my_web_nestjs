@@ -4,8 +4,8 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
-import { UsersService } from 'src/users/users.service';
+import { CreateUserDto } from '../users/dto/create-user.dto';
+import { UsersService } from '../users/users.service';
 import { LoginDto, UserDataToken } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
 
@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   async login(loginUser: LoginDto) {
-    const user = await this.usersService.findOneByEmail(loginUser.email);
+    const user = await this.usersService.findByEmailWithPassword(loginUser.email);
     if (!user) {
       throw new UnauthorizedException('Las credenciales no son validas');
     }

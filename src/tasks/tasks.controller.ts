@@ -11,7 +11,7 @@ import {
   HttpCode,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
-import { CreateTaskDto } from 'src/tasks/dto/create-task.dto';
+import { CreateTaskDto } from '../tasks/dto/create-task.dto';
 
 @Controller('tasks')
 export class TasksController {
