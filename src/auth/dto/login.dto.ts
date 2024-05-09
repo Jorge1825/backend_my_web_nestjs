@@ -31,7 +31,7 @@ export class LoginDto {
   password: string;
 
   async comparePassword(password: string) {
-    return compareSync(password, this.password);
+    return compareSync(this.password, password);
   }
 }
 

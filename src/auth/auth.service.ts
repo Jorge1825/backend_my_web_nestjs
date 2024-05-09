@@ -16,8 +16,8 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  private generateToken(dataToken: UserDataToken) {
-    return this.jwtService.signAsync(dataToken);
+  private async generateToken(dataToken: UserDataToken) {
+    return this.jwtService.sign(dataToken);
   }
 
   async login(loginUser: LoginDto) {
@@ -31,7 +31,7 @@ export class AuthService {
     }
 
     return {
-      access_token: this.generateToken({
+      access_token:await this.generateToken({
         sub: user._id.toString(),
         email: user.email,
         role: user.role,

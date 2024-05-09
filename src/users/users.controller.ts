@@ -11,8 +11,10 @@ import {
   HttpCode,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from '../users/dto/create-user.dto';
+import { ApiBearerAuth, ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
+@ApiBearerAuth()
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
@@ -26,6 +28,4 @@ export class UsersController {
       throw new NotFoundException('Users not found');
     }
   }
-
- 
 }

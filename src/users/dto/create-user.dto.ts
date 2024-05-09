@@ -33,7 +33,6 @@ export class CreateUserDto {
   })
   email: string;
 
-
   @Transform(({ value }) => value.trim())
   @IsString({
     message: 'La contraseña debe ser un texto',
@@ -55,8 +54,7 @@ export class CreateUserDto {
   async encryptPassword() {
     this.password = hashSync(this.password, 10);
   }
-
   async comparePassword(password: string) {
-    return compareSync(password, this.password);
+    return compareSync(this.password, password);
   }
 }

@@ -9,8 +9,10 @@ import { JwtModule } from '@nestjs/jwt';
     UsersModule,
     JwtModule.register({
       global: true, // para que el modulo sea global
-      secret: process.env.JWT_SECRET, // la clave secreta
       signOptions: { expiresIn: '7d', algorithm: 'HS256' },
+      secretOrKeyProvider: (requestType, tokenOrPayload, verifyOrSign) => {
+        return process.env.JWT_SECRET;
+      }
     }),
   ],
   controllers: [AuthController],
